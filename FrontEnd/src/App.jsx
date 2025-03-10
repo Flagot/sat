@@ -1,12 +1,16 @@
-function App() {
-  const [count, setCount] = useState(0);
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Landing from "./pages/landing";
 
+function App() {
   return (
-    <>
-      <section id="center">
-        <h1>Get started</h1>
-      </section>
-    </>
+    <div className="flex">
+      <div className="flex-1">
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/landing" element={<Landing />} />
+        </Routes>
+      </div>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../store/hooks";
-import logo from "../assets/images.png";
+import logo from "../assets/sat_logo-removebg-preview.png";
 
 const Landing = () => {
   const isAuthenticated = !!useAppSelector((state) => state.auth.user);

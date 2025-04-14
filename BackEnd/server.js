@@ -4,7 +4,6 @@ require("dotenv").config();
 const cors = require("cors");
 const helmet = require("helmet");
 const mongoSanitize = require("./middleware/mongoSanitize");
-const welcome = require("./models/welcom");
 // Ensure all models are loaded before routes
 require("./models/questionsModel");
 require("./models/examModel");
@@ -20,7 +19,6 @@ const modulesRoutes = require("./routes/modules");
 const questionsRoutes = require("./routes/questions");
 const examSessionsRoutes = require("./routes/examSessions");
 const examPurchasesRoutes = require("./routes/examPurchases");
-const testRoutes = require("./routes/test");
 const aiRoutes = require("./routes/ai");
 const flashcardsRoutes = require("./routes/flashcards");
 const examSectionModulesRoutes = require("./routes/examSectionModules");
@@ -39,7 +37,7 @@ app.use(
       },
     },
     crossOriginEmbedderPolicy: false, // Allow embedding if needed
-  })
+  }),
 );
 
 // CORS configuration
@@ -53,7 +51,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 // Body parser with size limit
@@ -98,10 +96,11 @@ console.log("✅ Flashcards routes registered at /api/flashcards");
 
 // Exam Section Module routes
 app.use("/api/exam-section-modules", examSectionModulesRoutes);
-console.log("✅ Exam Section Module routes registered at /api/exam-section-modules");
+console.log(
+  "✅ Exam Section Module routes registered at /api/exam-section-modules",
+);
 
 // Test routes (for debugging - remove in production)
-app.use("/api/test", testRoutes);
 
 app.get("/api", async (req, res) => {
   const mssg = await welcome.find({});

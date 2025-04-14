@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "../components/cards";
-import logo from "../assets/satt.png";
+import logo from "../assets/sat_logo-removebg-preview.png";
 import { useAppSelector } from "../store/hooks";
 
 const Home = () => {
@@ -67,13 +67,18 @@ const Home = () => {
               const examIdStr = examId.toString();
 
               const existing = byExamId.get(examIdStr);
-              if (!existing || getSessionTime(session) > getSessionTime(existing)) {
+              if (
+                !existing ||
+                getSessionTime(session) > getSessionTime(existing)
+              ) {
                 byExamId.set(examIdStr, session);
               }
             }
 
             const examData = Array.from(byExamId.values()).map((session) => {
-              const exam = session.examId?._id ? session.examId : session.examId;
+              const exam = session.examId?._id
+                ? session.examId
+                : session.examId;
               return {
                 ...exam,
                 sessionId: session._id,
@@ -124,7 +129,9 @@ const Home = () => {
             const examData = (data || [])
               .filter((session) => session.examId)
               .map((session) => {
-                const exam = session.examId?._id ? session.examId : session.examId;
+                const exam = session.examId?._id
+                  ? session.examId
+                  : session.examId;
                 return {
                   ...exam,
                   sessionId: session._id,
@@ -190,9 +197,7 @@ const Home = () => {
         }
 
         const availableById = new Map(
-          available
-            .filter((e) => e && e._id)
-            .map((e) => [e._id.toString(), e])
+          available.filter((e) => e && e._id).map((e) => [e._id.toString(), e]),
         );
 
         // Map active sessions by examId for quick lookup
@@ -210,9 +215,13 @@ const Home = () => {
 
           const unlocked = exam?.unlocked === true || avail?.unlocked === true;
           const purchased =
-            avail?.purchased === true || (!unlocked && !!avail) || exam?.purchased === true;
+            avail?.purchased === true ||
+            (!unlocked && !!avail) ||
+            exam?.purchased === true;
 
-          const sessionId = idStr ? activeSessionByExamId.get(idStr) : undefined;
+          const sessionId = idStr
+            ? activeSessionByExamId.get(idStr)
+            : undefined;
 
           return {
             ...exam,
@@ -227,7 +236,9 @@ const Home = () => {
         // Apply filter for "Unlocked" tab in this section
         if (!all && isUnlocked) {
           if (token) {
-            merged = merged.filter((e) => e?.unlocked === true || e?.purchased === true);
+            merged = merged.filter(
+              (e) => e?.unlocked === true || e?.purchased === true,
+            );
           } else {
             merged = merged.filter((e) => e?.unlocked === true);
           }
@@ -270,7 +281,7 @@ const Home = () => {
       const isPastExam = exam.isPast || showPast;
       // Only treat as active if it's not a past exam
       const hasActiveSession = !isPastExam && !!exam.sessionId;
-      
+
       if (hasActiveSession) {
         description = "In Progress";
       } else if (isPastExam) {
@@ -369,7 +380,8 @@ const Home = () => {
                 Full-length SAT practice tests
               </h2>
               <p className="text-xs text-slate-500">
-                Choose from all available exams. Locked tests can be purchased or unlocked.
+                Choose from all available exams. Locked tests can be purchased
+                or unlocked.
               </p>
             </div>
             <div className="inline-flex items-center gap-1 rounded-full bg-slate-100 p-1 text-xs font-medium text-slate-600">

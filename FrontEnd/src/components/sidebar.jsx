@@ -20,7 +20,7 @@ import {
   BsMic,
   BsPerson,
 } from "react-icons/bs";
-import logo from "../assets/images.png";
+import logo from "../assets/sat_logo-removebg-preview.png";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -61,7 +61,9 @@ const Sidebar = () => {
             <div className="truncate text-sm font-semibold tracking-wide">
               SAT PRIME
             </div>
-            <div className="truncate text-xs text-slate-400">Practice • Track • Improve</div>
+            <div className="truncate text-xs text-slate-400">
+              Practice • Track • Improve
+            </div>
           </div>
         </Link>
 

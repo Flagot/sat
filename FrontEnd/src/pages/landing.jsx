@@ -4,6 +4,10 @@ import logo from "../assets/sat_logo-removebg-preview.png";
 
 const Landing = () => {
   const isAuthenticated = !!useAppSelector((state) => state.auth.user);
+  const primaryBtnClass =
+    "rounded-md bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2";
+  const secondaryBtnClass =
+    "rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2";
 
   return (
     <div className="min-h-screen bg-white">
@@ -15,7 +19,7 @@ const Landing = () => {
       <header className="mx-auto max-w-6xl px-5 pt-6">
         <div className="flex items-center justify-between">
           <Link to="/landing" className="flex items-center gap-2">
-            <img src={logo} alt="SAT Prime" className="h-10 w-10" />
+            <img src={logo} alt="SAT Prime" className="h-14 w-14" />
             <div className="leading-tight">
               <div className="font-bold text-gray-900">SAT PRIME</div>
               <div className="text-xs text-gray-500">
@@ -28,13 +32,13 @@ const Landing = () => {
             <div className="flex items-center gap-2">
               <Link
                 to="/login"
-                className="rounded-md px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50"
+                className={secondaryBtnClass}
               >
                 Log in
               </Link>
               <Link
                 to="/signup"
-                className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                className={primaryBtnClass}
               >
                 Sign up
               </Link>
@@ -42,7 +46,7 @@ const Landing = () => {
           ) : (
             <Link
               to="/app"
-              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+              className={primaryBtnClass}
             >
               Go to dashboard
             </Link>
@@ -67,13 +71,13 @@ const Landing = () => {
                 <>
                   <Link
                     to="/signup"
-                    className="rounded-md bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700"
+                    className={`${primaryBtnClass} px-5 py-3`}
                   >
                     Get started free
                   </Link>
                   <Link
                     to="/login"
-                    className="rounded-md border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-800 hover:bg-gray-50"
+                    className={`${secondaryBtnClass} px-5 py-3`}
                   >
                     I already have an account
                   </Link>
@@ -82,7 +86,7 @@ const Landing = () => {
                 <>
                   <Link
                     to="/app"
-                    className="rounded-md bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700"
+                    className={`${primaryBtnClass} px-5 py-3`}
                   >
                     Continue practicing
                   </Link>
@@ -222,7 +226,7 @@ const Landing = () => {
 
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-xl font-bold text-white">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-xl font-bold text-white">
                 1
               </div>
               <h3 className="text-lg font-semibold text-gray-900">
@@ -235,7 +239,7 @@ const Landing = () => {
             </div>
 
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-xl font-bold text-white">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-xl font-bold text-white">
                 2
               </div>
               <h3 className="text-lg font-semibold text-gray-900">
@@ -249,7 +253,7 @@ const Landing = () => {
             </div>
 
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-xl font-bold text-white">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-900 text-xl font-bold text-white">
                 3
               </div>
               <h3 className="text-lg font-semibold text-gray-900">
@@ -277,13 +281,13 @@ const Landing = () => {
               <div className="flex gap-2">
                 <Link
                   to="/signup"
-                  className="rounded-md bg-white px-5 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
+                  className={`${primaryBtnClass} px-5 py-3`}
                 >
                   Sign up
                 </Link>
                 <Link
                   to="/login"
-                  className="rounded-md border border-white/20 bg-transparent px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
+                  className={`${secondaryBtnClass} px-5 py-3 border-gray-500 bg-gray-100 text-gray-900 hover:bg-gray-200`}
                 >
                   Log in
                 </Link>
@@ -291,7 +295,7 @@ const Landing = () => {
             ) : (
               <Link
                 to="/app"
-                className="rounded-md bg-white px-5 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-100"
+                className={`${primaryBtnClass} px-5 py-3`}
               >
                 Go to dashboard
               </Link>

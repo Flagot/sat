@@ -7,6 +7,19 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { verifyToken } from "./store/slices/authSlice";
 
+const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/+$/, "");
+
+// In production deployments (e.g., Vercel), route relative /api calls to backend host.
+if (import.meta.env.PROD && apiBaseUrl && typeof window !== "undefined") {
+  const originalFetch = window.fetch.bind(window);
+  window.fetch = (input, init) => {
+    if (typeof input === "string" && input.startsWith("/api/")) {
+      return originalFetch(`${apiBaseUrl}${input}`, init);
+    }
+    return originalFetch(input, init);
+  };
+}
+
 // Component to verify token on app load
 const AuthInitializer = () => {
   useEffect(() => {

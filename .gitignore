@@ -1,5 +1,8 @@
 # Dependencies
 node_modules/
+Scripts/
+temp/
+
 
 # Environment (secrets – do not commit)
 .env
@@ -35,3 +38,4 @@ coverage/
 .cache/
 tmp/
 temp/
+scripts/
